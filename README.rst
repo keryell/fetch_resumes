@@ -14,12 +14,16 @@ This means that if you have 100 of candidates and 10 clicks + some
 waiting time required to get each candidate résumé you end up with
 1000 clicks and hours of web page baby-sitting... :-(
 
-Not fancy for a computer scientist. :-(
+Not fancy for a computer scientist!
 
 So why not having a tool to just download everything on your computer
 and then you can look at the CV off-line?
 
 This is this!
 
-To be fair, it is also a small project to experiment about how modern
+Some assumptions about the file format: it skips the first line that
+should have the column description and assumes that the "," CSV file
+has the URL in the last column, which is after the last ",".
+
+To be fair, this small project is also an experiment about how modern
 C++ can do a job where a shell script or Python could do the job. :-)
