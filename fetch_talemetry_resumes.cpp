@@ -35,6 +35,9 @@ int main(int argc, char *argv[]) {
     std::filesystem::create_directory(subdirectory);
     std::filesystem::current_path(subdirectory);
 
+    // The path to the curl command
+    auto curl = boost::process::search_path("curl");
+
     // Explicit the type here since we construct a std::string
     // from a std::sub_match
     for (const std::string url : ranges::getlines_view { file }
@@ -47,7 +50,7 @@ int main(int argc, char *argv[]) {
       auto resume_url = std::regex_replace(url + "/resume/download", profiles,
                                            "/candidate/");
       // Use curl to do the real fetching, to handle HTTP protocol
-      boost::process::system(bp::search_path("curl"),
+      boost::process::system(curl,
                              // Use the name advertized by the server
                              // to store the file
                              "--remote-name", "--remote-header-name",
